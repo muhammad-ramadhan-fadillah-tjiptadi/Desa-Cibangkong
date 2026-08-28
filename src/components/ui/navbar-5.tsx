@@ -1,6 +1,7 @@
 "use client";
 
 import { MenuIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 import {
   Accordion,
   AccordionContent,
@@ -49,8 +50,13 @@ export const Navbar5 = () => {
     },
   ];
 
+  const navItemStyles = cn(
+    navigationMenuTriggerStyle(),
+    "bg-transparent text-primary-foreground hover:bg-white/20 hover:text-white focus:bg-white/20 focus:text-white data-[state=open]:bg-white/20 data-[active]:bg-white/20"
+  );
+
   return (
-    <section className="py-4 w-full">
+    <section className="sticky top-0 z-50 py-4 w-full bg-primary/95 text-primary-foreground backdrop-blur-md border-b border-primary-foreground/10 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between">
           <a href="/" className="flex items-center gap-2">
@@ -61,30 +67,35 @@ export const Navbar5 = () => {
           <NavigationMenu className="hidden lg:block">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink href="#beranda" className={navItemStyles}>
                   Beranda
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink href="#profil-desa" className={navItemStyles}>
                   Profile
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Informasi</NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavigationMenuLink href="#bank-sampah" className={navItemStyles}>
+                  Bank Sampah
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className={navItemStyles}>Informasi</NavigationMenuTrigger>
+                <NavigationMenuContent className="bg-primary text-white border-white/10">
                   <div className="grid w-[500px] grid-cols-2 p-3 gap-2">
                     {informasiDesa.map((item, index) => (
                       <NavigationMenuLink
                         href={item.href}
                         key={index}
-                        className="block rounded-md p-3 transition-colors hover:bg-muted/70"
+                        className="block rounded-md p-3 transition-colors hover:bg-white/10"
                       >
                         <div>
-                          <p className="mb-1 font-semibold text-foreground">
+                          <p className="mb-1 font-semibold text-white">
                             {item.title}
                           </p>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm text-white/70">
                             {item.description}
                           </p>
                         </div>
@@ -94,24 +105,24 @@ export const Navbar5 = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink href="#" className={navItemStyles}>
                   UMKM
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink href="#" className={navItemStyles}>
                   Layanan
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
           <div className="hidden items-center gap-4 lg:flex">
-            <Button>Login Admin</Button>
+            <Button className="bg-white text-primary hover:bg-white/90 font-semibold shadow-sm">Login Admin</Button>
           </div>
           <Sheet>
             <SheetTrigger asChild className="lg:hidden">
-              <Button variant="outline" size="icon">
-                <MenuIcon className="h-4 w-4" />
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 hover:text-white">
+                <MenuIcon className="h-5 w-5" />
               </Button>
             </SheetTrigger>
             <SheetContent side="top" className="max-h-screen overflow-auto">
@@ -126,8 +137,9 @@ export const Navbar5 = () => {
               </SheetHeader>
               <div className="flex flex-col p-4">
                 <div className="flex flex-col gap-4 mt-4">
-                  <a href="#" className="font-medium text-lg hover:text-muted-foreground transition-colors">Beranda</a>
-                  <a href="#" className="font-medium text-lg hover:text-muted-foreground transition-colors">Profile</a>
+                  <a href="#beranda" className="font-medium text-lg hover:text-muted-foreground transition-colors">Beranda</a>
+                  <a href="#profil-desa" className="font-medium text-lg hover:text-muted-foreground transition-colors">Profile</a>
+                  <a href="#bank-sampah" className="font-medium text-lg hover:text-muted-foreground transition-colors">Bank Sampah</a>
                 </div>
                 <Accordion type="single" collapsible className="mb-2">
                   <AccordionItem value="informasi" className="border-none">

@@ -3,9 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
-  Info, BookOpen, Target, Lightbulb, MapPin, 
-  Maximize2, Compass, CheckCircle2, Leaf, Recycle, 
-  Users, Sprout
+  Info, BookOpen, Target, Lightbulb, MapPin, Maximize2, Recycle, Leaf
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

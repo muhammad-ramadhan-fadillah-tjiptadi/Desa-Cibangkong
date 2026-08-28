@@ -216,6 +216,7 @@ export function HeroScattered({
 
   return (
     <section
+      id="beranda"
       className="relative isolate w-full min-h-[100dvh] overflow-hidden bg-background"
       aria-label="Halaman utama Desa Cibangkong"
     >

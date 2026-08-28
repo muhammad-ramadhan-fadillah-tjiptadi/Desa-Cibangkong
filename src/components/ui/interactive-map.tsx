@@ -28,6 +28,7 @@ export const InteractiveMap = () => {
   const [showFasum, setShowFasum] = useState(true);
   const [showCCTV, setShowCCTV] = useState(true);
   const [showPJU, setShowPJU] = useState(true);
+  const [isAlarmActive, setIsAlarmActive] = useState(false);
   
   const [hoveredRW, setHoveredRW] = useState<string | null>(null);
 
@@ -63,18 +64,42 @@ export const InteractiveMap = () => {
         </div>
 
         {/* Security Status */}
-        <div className="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-5">
+        <div className={cn(
+          "border rounded-2xl p-5 transition-colors duration-500",
+          isAlarmActive ? "bg-red-50/80 border-red-200" : "bg-emerald-50/50 border-emerald-100"
+        )}>
           <div className="flex gap-3 items-start mb-4">
-            <div className="bg-primary text-white p-2 rounded-lg shrink-0">
+            <div className={cn(
+              "p-2 rounded-lg shrink-0 transition-colors duration-500",
+              isAlarmActive ? "bg-red-500 text-white animate-pulse" : "bg-primary text-white"
+            )}>
               <ShieldAlert size={18} />
             </div>
             <div>
-              <strong className="block text-foreground text-sm mb-1">Sistem Keamanan Aman</strong>
-              <span className="text-xs text-muted-foreground leading-relaxed block">Seluruh titik pemukiman dan batas RW dalam kondisi tertib.</span>
+              <strong className={cn(
+                "block text-sm mb-1 transition-colors",
+                isAlarmActive ? "text-red-700" : "text-foreground"
+              )}>
+                {isAlarmActive ? "Status Darurat Terdeteksi!" : "Sistem Keamanan Aman"}
+              </strong>
+              <span className={cn(
+                "text-xs leading-relaxed block transition-colors",
+                isAlarmActive ? "text-red-600/80" : "text-muted-foreground"
+              )}>
+                {isAlarmActive 
+                  ? "Panggilan darurat dari wilayah RW 03. Segera kerahkan satuan pelindungan masyarakat (Linmas)." 
+                  : "Seluruh titik pemukiman dan batas RW dalam kondisi tertib."}
+              </span>
             </div>
           </div>
-          <button className="w-full bg-primary hover:bg-primary/90 text-white text-xs font-semibold py-2.5 rounded-xl transition-colors">
-            Simulasikan Alarm SOS Warga
+          <button 
+            onClick={() => setIsAlarmActive(!isAlarmActive)}
+            className={cn(
+              "w-full text-white text-xs font-semibold py-2.5 rounded-xl transition-colors",
+              isAlarmActive ? "bg-red-600 hover:bg-red-700" : "bg-primary hover:bg-primary/90"
+            )}
+          >
+            {isAlarmActive ? "Matikan Alarm Darurat" : "Simulasikan Alarm SOS Warga"}
           </button>
         </div>
 
@@ -171,6 +196,23 @@ export const InteractiveMap = () => {
 
         {/* Markers */}
         <div className="absolute inset-0 z-20 pointer-events-none">
+          {isAlarmActive && (
+            <div 
+              className="absolute z-30 flex flex-col items-center pointer-events-none"
+              style={{ left: '20%', top: '25%', transform: 'translate(-50%, -50%)' }}
+            >
+              <div className="relative flex items-center justify-center">
+                <div className="absolute w-12 h-12 bg-red-500 rounded-full animate-ping opacity-75"></div>
+                <div className="relative w-8 h-8 bg-red-600 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
+                  <ShieldAlert size={14} className="text-white" />
+                </div>
+              </div>
+              <div className="mt-2 bg-red-600 text-white text-[10px] px-2 py-1 rounded shadow-md font-bold uppercase tracking-wider animate-pulse">
+                SOS - RW 03
+              </div>
+            </div>
+          )}
+
           {markers.map((marker, idx) => {
             if (marker.type === "fasum" && !showFasum) return null;
             if (marker.type === "cctv" && !showCCTV) return null;
