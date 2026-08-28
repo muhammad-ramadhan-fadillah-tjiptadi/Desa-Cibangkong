@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@theme inline {
+  --color-primary: #2F5C36;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #6B4F3A;
+  --color-secondary-foreground: #FFFFFF;
+  --color-background: #FFFFFF;
+  --color-foreground: #1F2937;
+  --color-muted: #F3F4F6;
+  --color-muted-foreground: #6B7280;
+  --color-accent: #F9F8F6;
+  --color-accent-foreground: #2F5C36;
+  --color-border: #E5E7EB;
+  --color-input: #E5E7EB;
+  --color-ring: #2F5C36;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #1F2937;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1F2937;
+
+  --font-sans: "Untitled Serif", Georgia, serif;
+  --font-serif: "Untitled Serif", Georgia, serif;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
