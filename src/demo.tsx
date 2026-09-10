@@ -2,6 +2,7 @@ import { Navbar5 } from "@/components/ui/navbar-5";
 import { HeroScattered } from "@/components/ui/hero-scattered";
 import { ProfileDesa } from "@/components/ui/profile-desa";
 import { BankSampahDashboard } from "@/components/ui/bank-sampah-dashboard";
+import { AparaturDesa } from "@/components/ui/aparatur-desa";
 import { Recycle, Leaf, BarChart3 } from "lucide-react";
 
 const DemoOne = () => {
@@ -49,6 +50,7 @@ const DemoOne = () => {
       />
       <ProfileDesa />
       <BankSampahDashboard />
+      <AparaturDesa />
     </div>
   );
 };

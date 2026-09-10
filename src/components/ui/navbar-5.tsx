@@ -31,7 +31,7 @@ export const Navbar5 = () => {
     {
       title: "Aparatur",
       description: "Struktur organisasi dan pemerintahan desa",
-      href: "#",
+      href: "#aparatur",
     },
     {
       title: "Statistik",

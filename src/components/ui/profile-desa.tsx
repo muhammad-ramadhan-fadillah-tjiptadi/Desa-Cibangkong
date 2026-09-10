@@ -106,7 +106,7 @@ export const ProfileDesa = () => {
                 </div>
                 
                 <div className="lg:col-span-4">
-                  <div className="bg-primary rounded-3xl p-8 text-white h-full shadow-lg">
+                  <div className="bg-primary rounded-3xl p-8 text-white h-fit shadow-lg">
                     <div className="mb-10">
                       <div className="text-[10px] font-bold text-white/60 tracking-wider uppercase mb-3">Geografi Adat</div>
                       <div className="text-3xl lg:text-4xl font-bold font-serif mb-2 flex items-center gap-3">

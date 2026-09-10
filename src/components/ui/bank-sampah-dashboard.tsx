@@ -48,7 +48,7 @@ const MetricCard = ({ title, value, icon: Icon, delay }: any) => (
 
 export const BankSampahDashboard = () => {
   return (
-    <section className="relative w-full bg-[#F9F8F6] py-24 lg:py-32 overflow-hidden" id="bank-sampah">
+    <section className="relative w-full bg-background py-24 lg:py-32 overflow-hidden" id="bank-sampah">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header Section */}
@@ -60,7 +60,6 @@ export const BankSampahDashboard = () => {
               viewport={{ once: true }}
               className="flex items-center gap-2 mb-6"
             >
-              <span className="w-8 h-[1px] bg-primary"></span>
               <span className="text-primary font-bold text-sm tracking-widest uppercase">Ekonomi Sirkular</span>
             </motion.div>
             <motion.h2 
