@@ -38,14 +38,7 @@ const newsData = [
 export const BeritaDesa = () => {
   const [selectedNews, setSelectedNews] = useState<any>(null);
 
-  const handleOpenInfo = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setSelectedNews({
-      type: 'info',
-      title: "Halaman Semua Berita",
-      content: "Fitur Indeks Semua Berita sedang dalam tahap pengembangan. Nantikan pembaruan sistem selanjutnya dari Desa Cibangkong!",
-    });
-  };
+
 
   const handleOpenNews = (e: React.MouseEvent, news: any) => {
     e.preventDefault();
@@ -76,16 +69,6 @@ export const BeritaDesa = () => {
               Berita & Pengumuman
             </motion.h2>
           </div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <button onClick={handleOpenInfo} className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-primary/80 transition-colors">
-              Lihat Semua Berita <ArrowRight size={16} />
-            </button>
-          </motion.div>
         </div>
 
         {/* News Grid */}
