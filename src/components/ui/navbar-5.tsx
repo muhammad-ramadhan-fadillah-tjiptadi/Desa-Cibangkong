@@ -27,6 +27,17 @@ import {
 } from "@/components/ui/sheet";
 
 export const Navbar5 = () => {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = e.currentTarget.getAttribute("href");
+    if (href && href.startsWith("#") && href !== "#") {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        elem.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
   const informasiDesa = [
     {
       title: "Aparatur",
@@ -36,17 +47,17 @@ export const Navbar5 = () => {
     {
       title: "Statistik",
       description: "Data kependudukan dan demografi desa",
-      href: "#",
+      href: "#statistik",
     },
     {
       title: "Berita",
       description: "Kabar dan pengumuman terbaru desa",
-      href: "#",
+      href: "#berita",
     },
     {
       title: "CCTV",
       description: "Pantauan langsung kondisi area desa",
-      href: "#",
+      href: "#cctv",
     },
   ];
 
@@ -67,17 +78,17 @@ export const Navbar5 = () => {
           <NavigationMenu className="hidden lg:block">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#beranda" className={navItemStyles}>
+                <NavigationMenuLink href="#beranda" className={navItemStyles} onClick={handleScroll}>
                   Beranda
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#profil-desa" className={navItemStyles}>
+                <NavigationMenuLink href="#profil-desa" className={navItemStyles} onClick={handleScroll}>
                   Profile
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#bank-sampah" className={navItemStyles}>
+                <NavigationMenuLink href="#bank-sampah" className={navItemStyles} onClick={handleScroll}>
                   Bank Sampah
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -89,6 +100,7 @@ export const Navbar5 = () => {
                       <NavigationMenuLink
                         href={item.href}
                         key={index}
+                        onClick={handleScroll}
                         className="block rounded-md p-3 transition-colors hover:bg-white/10"
                       >
                         <div>
@@ -105,12 +117,12 @@ export const Navbar5 = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navItemStyles}>
+                <NavigationMenuLink href="#umkm" className={navItemStyles} onClick={handleScroll}>
                   UMKM
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navItemStyles}>
+                <NavigationMenuLink href="#layanan" className={navItemStyles} onClick={handleScroll}>
                   Layanan
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -137,9 +149,9 @@ export const Navbar5 = () => {
               </SheetHeader>
               <div className="flex flex-col p-4">
                 <div className="flex flex-col gap-4 mt-4">
-                  <a href="#beranda" className="font-medium text-lg hover:text-muted-foreground transition-colors">Beranda</a>
-                  <a href="#profil-desa" className="font-medium text-lg hover:text-muted-foreground transition-colors">Profile</a>
-                  <a href="#bank-sampah" className="font-medium text-lg hover:text-muted-foreground transition-colors">Bank Sampah</a>
+                  <a href="#beranda" onClick={handleScroll} className="font-medium text-lg hover:text-muted-foreground transition-colors">Beranda</a>
+                  <a href="#profil-desa" onClick={handleScroll} className="font-medium text-lg hover:text-muted-foreground transition-colors">Profile</a>
+                  <a href="#bank-sampah" onClick={handleScroll} className="font-medium text-lg hover:text-muted-foreground transition-colors">Bank Sampah</a>
                 </div>
                 <Accordion type="single" collapsible className="mb-2">
                   <AccordionItem value="informasi" className="border-none">
@@ -152,6 +164,7 @@ export const Navbar5 = () => {
                           <a
                             href={item.href}
                             key={index}
+                            onClick={handleScroll}
                             className="rounded-md p-3 transition-colors hover:bg-muted/70 flex flex-col"
                           >
                             <span className="mb-1 font-semibold text-foreground">
@@ -167,8 +180,8 @@ export const Navbar5 = () => {
                   </AccordionItem>
                 </Accordion>
                 <div className="flex flex-col gap-4">
-                  <a href="#" className="font-medium text-lg hover:text-muted-foreground transition-colors">UMKM</a>
-                  <a href="#" className="font-medium text-lg hover:text-muted-foreground transition-colors">Layanan</a>
+                  <a href="#umkm" onClick={handleScroll} className="font-medium text-lg hover:text-muted-foreground transition-colors">UMKM</a>
+                  <a href="#layanan" onClick={handleScroll} className="font-medium text-lg hover:text-muted-foreground transition-colors">Layanan</a>
                 </div>
                 <div className="mt-8 flex flex-col gap-4">
                   <Button>Login Admin</Button>
