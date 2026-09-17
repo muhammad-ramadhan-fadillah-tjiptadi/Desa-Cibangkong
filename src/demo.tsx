@@ -4,6 +4,7 @@ import { ProfileDesa } from "@/components/ui/profile-desa";
 import { BankSampahDashboard } from "@/components/ui/bank-sampah-dashboard";
 import { AparaturDesa } from "@/components/ui/aparatur-desa";
 import { StatistikDesa } from "@/components/ui/statistik-desa";
+import { BeritaDesa } from "@/components/ui/berita-desa";
 import { Recycle, Leaf, BarChart3 } from "lucide-react";
 
 const DemoOne = () => {
@@ -53,6 +54,7 @@ const DemoOne = () => {
       <BankSampahDashboard />
       <AparaturDesa />
       <StatistikDesa />
+      <BeritaDesa />
     </div>
   );
 };
